@@ -12,7 +12,21 @@ def generate_answer(context: str, query: str, api_key: str = os.getenv("GOOGLE_A
 
     genai.configure(api_key=api_key)
     model = genai.GenerativeModel(model_name)
-    prompt = f"Context: {context}\nQuery: {query}\nAnswer:"
+    
+    # Create a strict prompt that enforces context-bound answers
+    system_prompt = """You are an AI assistant that can ONLY answer questions based on the provided context. 
+    If the question cannot be answered using the given context, respond with: 
+    "I cannot answer this question as it's not covered in the provided context."
+    DO NOT use any external knowledge or make assumptions beyond what's in the context."""
+    
+    prompt = f"""{system_prompt}
+
+Context:
+{context}
+
+Question: {query}
+
+Answer (based ONLY on the above context):"""
 
     try:
         response = model.generate_content(prompt)
