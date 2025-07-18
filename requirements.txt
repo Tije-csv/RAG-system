@@ -4,13 +4,13 @@ PyPDF2==3.0.1
 openai-whisper==20231117
 faiss-cpu==1.7.4
 python-dotenv==1.0.0
-fastapi[all]==0.109.2
+fastapi==0.109.2
 uvicorn==0.27.1
 torch==2.1.0
 transformers
 sentence-transformers==2.2.2
 google-generativeai==0.3.2
-python-multipart==0.0.6
+python-multipart==0.0.7
 langchain==0.0.208
 pinecone-client==2.2.2
 FlagEmbedding
