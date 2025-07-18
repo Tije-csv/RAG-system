@@ -9,6 +9,16 @@ from generation import generate_answer
 
 app = FastAPI()
 
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allows all origins
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all methods
+    allow_headers=["*"],  # Allows all headers
+)
+
+
 class QueryRequest(BaseModel):
     query: str
     data_sources: List[str] = []  # List of URLs, PDF paths, or audio paths
