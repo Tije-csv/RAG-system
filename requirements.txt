@@ -12,5 +12,6 @@ sentence-transformers
 google-generativeai
 python-multipart
 langchain
+langchain-community
 pinecone-client
 FlagEmbedding
